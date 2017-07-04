@@ -51,9 +51,9 @@
                 alert('O número de aulas precisa ser no mínimo 1!');
                 aulas.focus();
             } else {
-                if (presencas.value < aulas.value) {
+                if (presencas.value > aulas.value) {
                     alert('O número de presenças não pode ser maior do que o número de aulas!');
-                    presencas.focus();
+                    location.reload();
                 } else {
                     var faltas = aulas.value - presencas.value;
                     porcentagem = calcularPorcentagem(presencas.value, aulas.value);
