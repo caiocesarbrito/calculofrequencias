@@ -44,10 +44,19 @@
     botao.addEventListener("click", function () {
         var presencas = document.getElementById("presencas");
         var aulas = document.getElementById("aulas");
-        var faltas = aulas.value - presencas.value;
-        porcentagem = calcularPorcentagem(presencas.value, aulas.value);
-        document.getElementById("result").innerHTML = "<p>A porcentagem de presenças é de: <strong>" + porcentagem + "%</strong></p>" +
-        "<p>O total de faltas é: <strong>" + faltas + "</strong></p>";
+        if (presencas.value == '' || aulas.value == '') {
+            alert('Preencha os dois campos!');
+        } else {
+            if (aulas.value <= 0) {
+                alert('O número de aulas precisa ser no mínimo 1!');
+                aulas.focus();
+            } else {
+                var faltas = aulas.value - presencas.value;
+                porcentagem = calcularPorcentagem(presencas.value, aulas.value);
+                document.getElementById("result").innerHTML = "<p>A porcentagem de presenças é de: <strong>" + porcentagem + "%</strong></p>" +
+                "<p>O total de faltas é: <strong>" + faltas + "</strong></p>";
+            }
+        }
     });     
 
     function calcularPorcentagem (presencas, aulas) {
