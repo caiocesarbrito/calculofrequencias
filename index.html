@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cálculo de Notas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body style="background-color: #eee">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Cálculo de Notas</h1>
+            <h3 class="hidden-xs" style="color: gray">Esse é um software gratuito que realiza o cálculo da porcentagem de presenças e número de faltas de um aluno.</h3>
+            
+            <div class="col-sm-6 col-xs-12" style="margin-top: 30px;">
+                <p>Insira a quantidade total de aulas do mês:</p>
+                    <input type="number" class="form-control" placeholder="Aulas" aria-describedby="basic-addon1" id="aulas">
+            </div>
+
+            <div class="col-sm-6 col-xs-12" style="margin-top: 30px;">
+                <p>Insira a soma das presenças:</p>
+                <input type="number" class="form-control" placeholder="Presenças" aria-describedby="basic-addon1" id="presencas">
+            </div>
+
+        </div>
+        <div class="container">
+            <div style="width: 100%; margin-top: 30px;">
+                <button class="btn btn-primary" id="calcular" onClick="">Calcular</button>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 20px;" id="result">
+        </div>
+        <div class="container">
+            <h5>Desenvolvido por Caio César Brito (github: <a href="http://github.com/caiocesarbrito" target="_blank">github.com/caiocesarbrito</a>, twitter: <a href="http://twitter.com/caiocesarbrito target="_blank"">@caiocesarbrito</a>)</h5>
+        </div>
+    </div>
+</body>
+<script>
+    var botao = document.getElementById("calcular");
+    botao.addEventListener("click", function () {
+        var presencas = document.getElementById("presencas");
+        var aulas = document.getElementById("aulas");
+        var faltas = aulas.value - presencas.value;
+        porcentagem = calcularPorcentagem(presencas.value, aulas.value);
+        document.getElementById("result").innerHTML = "<p>A porcentagem de presenças é de: <strong>" + porcentagem + "%</strong></p>" +
+        "<p>O total de faltas é: <strong>" + faltas + "</strong></p>";
+    });     
+
+    function calcularPorcentagem (presencas, aulas) {
+        return (100*presencas) / aulas;
+    }
+</script>
+</html>
