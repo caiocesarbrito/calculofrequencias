@@ -41,9 +41,9 @@
 </body>
 <script>
     var botao = document.getElementById("calcular");
+    var presencas = document.getElementById("presencas");
+    var aulas = document.getElementById("aulas");
     botao.addEventListener("click", function () {
-        var presencas = document.getElementById("presencas");
-        var aulas = document.getElementById("aulas");
         if (presencas.value == '' || aulas.value == '') {
             alert('Preencha os dois campos!');
         } else {
@@ -53,7 +53,9 @@
             } else {
                 if (presencas.value > aulas.value) {
                     alert('O número de presenças não pode ser maior do que o número de aulas!');
-                    location.reload();
+                    alert('presencas:' + presencas.value);
+                    alert('aulas:' + aulas.value);
+                    presencas.focus();
                 } else {
                     var faltas = aulas.value - presencas.value;
                     porcentagem = calcularPorcentagem(presencas.value, aulas.value);
